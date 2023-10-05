@@ -6,12 +6,11 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:33:36 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 15:44:46 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:53:29 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
 
 PmergeMe::PmergeMe(){}
 
@@ -78,7 +77,7 @@ void	PmergeMe::mergeSortvec(std::vector<int>& vectorM, int left, int right)
 {
 	if (left < right)
 	{
-		if (right - left < 10)
+		if (right - left < INSERTIONAUX)
 		{
 			for (int i = left + 1; i <= right; i++)
 			{
@@ -134,7 +133,7 @@ void	PmergeMe::mergeSortdeq(std::deque<int>& dequeM, int left, int right)
 {
 	if (left < right)
 	{
-		if (right - left < 10)
+		if (right - left < INSERTIONAUX)
 		{
 			for (int i = left + 1; i <= right; i++)
 			{
@@ -158,6 +157,22 @@ void	PmergeMe::mergeSortdeq(std::deque<int>& dequeM, int left, int right)
 	}
 }
 
+
+void	CheckRepeated(const std::vector<int>& vectorM)
+{
+	for (int i = 0; i <  (int)vectorM.size(); i++)
+	{
+		for (int j = 0; j < (int)vectorM.size(); j++)
+		{
+			if (j == i)
+				continue ;
+			if (vectorM[i] == vectorM[j])
+				throw std::invalid_argument("Found a repeated number.");
+		}
+	}
+
+}
+
 void	PmergeMe::merge(std::string *av)
 {
 	std::vector<int>	vectorM;
@@ -169,6 +184,7 @@ void	PmergeMe::merge(std::string *av)
 			vectorM.push_back(stoi(av[i]));
 		for (int i = 0; av[i].length() > 0 ; i++)
 			dequeM.push_back(stoi(av[i]));
+		CheckRepeated(vectorM);
 	}
 	catch (std::exception &e)
 	{
@@ -185,10 +201,7 @@ void	PmergeMe::merge(std::string *av)
 	double elapsedTimeVec = static_cast<double>(endTimeVec - startTimeVec) / CLOCKS_PER_SEC * 1000000.0;
 	double elapsedTimeDeq = static_cast<double>(endTimeDeq - startTimeDeq) / CLOCKS_PER_SEC * 1000000.0;
 	printDeque("After:", dequeM);
+	std::cout << std::fixed;
 	std::cout << "Time to process a range of " << vectorM.size() << " elements with std::vector<int> : " << elapsedTimeVec << " us" << std::endl;
 	std::cout << "Time to process a range of " << dequeM.size() << " elements with std::deque<int> : " << elapsedTimeDeq << " us" <<  std::endl;
 }
-
-
-	// for (std::list<int>::const_iterator it = listM.begin(); it != listM.end(); it++)
-		// std::cout << *it << " " ;//<< std::endl;

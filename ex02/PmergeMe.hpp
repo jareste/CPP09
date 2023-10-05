@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:33:44 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 15:25:09 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:53:07 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <deque>
 # include <ctime>
 # include <chrono>
+# include <unordered_set>
+# define INSERTIONAUX 3000
 
 class PmergeMe
 {

@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:33:51 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 15:38:05 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:53:37 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ int	main(int ac, char **av)
 	std::string *avc = new std::string[ac - 1];
 	for (int i = 1; i  < ac; i++)
 		avc[i - 1] = av[i];
-
 	PmergeMe::merge(avc);
-
 }
