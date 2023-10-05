@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 00:48:21 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 23:36:47 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/06 00:24:08 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class BitcoinExchange
 		BitcoinExchange	&operator=( const BitcoinExchange& bitcoinExchange );
 		static bool	getCSV(std::map<std::string, float> &data);
 		static bool	getBTC(const std::map<std::string, float> &data, std::string file);
+		static void	parseFileLine(std::string date, float value);
 		static void	parseDate(std::string date);
 		static void	printCSV(const std::map<std::string, float> &data);
 	public:

@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 00:48:17 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/06 00:13:57 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/06 00:24:01 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	BitcoinExchange::getCSV(std::map<std::string, float> &data)
 	return false;
 }
 
-void	parseFileLine(std::string date, float value)
+void	BitcoinExchange::parseFileLine(std::string date, float value)
 {
 	bool	error = false;
 
@@ -153,7 +153,19 @@ bool	BitcoinExchange::getBTC(const std::map<std::string, float> &data, std::stri
 			try
 			{
 				date = date.substr(0,10);
-				float fvalue = std::stof(value);
+				float	fvalue = 0;
+				try
+				{
+					value = value.substr(1, value.length());
+					for (int i = 0; i < (int)value.length(); i++)
+						if (!std::isdigit(value[i]) && value[i] != '.')
+							throw std::invalid_argument("Error: invalid number.");
+					fvalue = std::stof(value);
+				}
+				catch (std::exception &e)
+				{
+					throw std::invalid_argument("Error: invalid number.");
+				}
 				parseFileLine(date, fvalue);
 				std::map<std::string, float>::const_iterator it = data.lower_bound(date);
 				if (it == data.begin() || (it != data.end() && it->first != date))
@@ -175,13 +187,6 @@ bool	BitcoinExchange::getBTC(const std::map<std::string, float> &data, std::stri
 	return false;
 }
 
-
-void	BitcoinExchange::printCSV(const std::map<std::string, float> &data)
-{
-	for (std::map<std::string, float>::const_iterator it = data.begin(); it != data.end(); ++it)
-		std::cout << "Fecha: " << it->first << ", Valor: " << it->second << std::endl;
-}
-
 void	BitcoinExchange::btc(std::string av)
 {
 	(void)av;
@@ -190,9 +195,4 @@ void	BitcoinExchange::btc(std::string av)
 	if (getCSV(data))
 		throw std::runtime_error("There's an error in a date on CSV.");
 	getBTC(data, av);
-
-
-	// printCSV(data);
-
-
 }
