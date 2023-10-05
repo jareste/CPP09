@@ -6,11 +6,11 @@
 #    By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/04 00:47:51 by jareste-          #+#    #+#              #
-#    Updated: 2023/10/04 00:52:02 by jareste-         ###   ########.fr        #
+#    Updated: 2023/10/05 23:29:26 by jareste-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = BitcoinExchange
+NAME = btc
 
 #########
 RM = rm -f
