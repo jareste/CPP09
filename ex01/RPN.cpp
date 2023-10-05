@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:48:24 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/04 17:31:14 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/06 00:38:30 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ int	RPN::doOpertion(char c, std::stack<int> &arr)
 				throw std::invalid_argument("Please be smart and enter a valid input.");
 			return (second / first);
 		case 3:
+		{
+			double overflow = (static_cast<double>(second) * static_cast<double>(first));
+			if (overflow > 2147483647 || overflow < -2147483648)
+				throw std::invalid_argument("Overflow detected, please introduce a valid input.");
 			return (second * first);
+		}
 	}
 	return (0);
 }
@@ -72,10 +77,10 @@ void	RPN::parse(std::string rpn, std::stack<int> &arr)
 				if (arr.size() > 1)
 					arr.push(RPN::doOpertion(rpn[i], arr));
 				else
-					throw std::invalid_argument("Please be smart and enter a valid input.");
+					throw std::invalid_argument("Please enter a valid input.");
 			}
 			else		
-				throw std::invalid_argument("Please be smart and enter a valid input.");
+				throw std::invalid_argument("Please  valid input.");
 		}
 		else if (rpn[i] != ' ')
 			throw std::invalid_argument("Please be smart and enter a valid input.");
@@ -89,5 +94,5 @@ int	RPN::solveRPN(std::string rpn)
 	parse(rpn, arr);
 	if (arr.size() == 1)
 		return (arr.top());
-	throw std::invalid_argument("Please be smart and enter a valid input.");
+	throw std::invalid_argument(" enter a valid input.");
 }
