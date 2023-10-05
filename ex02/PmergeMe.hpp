@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:33:44 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 17:53:07 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:55:22 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class PmergeMe
 		PmergeMe	&operator=( const PmergeMe& pmergeme );
 		static void	printDeque(std::string msg, const std::deque<int> &dequeM);
 		static void	printVector(std::string msg, const std::vector<int> &vectorM);
+		static void	CheckRepeated(const std::vector<int>& vectorM);
 		static void mergeauxvec(std::vector<int>& vectorM, int left, int mid, int right);
 		static void	mergeSortvec(std::vector<int>& vectorM, int left, int right);
 		static void mergeauxdeq(std::deque<int>& dequeM, int left, int mid, int right);
@@ -37,8 +38,5 @@ class PmergeMe
 	public:
 		static void	merge(std::string *av);
 };
-
-	// list
-	// vector
 
 #endif

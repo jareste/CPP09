@@ -6,7 +6,7 @@
 /*   By: jareste- <jareste-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:33:36 by jareste-          #+#    #+#             */
-/*   Updated: 2023/10/05 17:53:29 by jareste-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:55:38 by jareste-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	PmergeMe::mergeSortdeq(std::deque<int>& dequeM, int left, int right)
 }
 
 
-void	CheckRepeated(const std::vector<int>& vectorM)
+void	PmergeMe::CheckRepeated(const std::vector<int>& vectorM)
 {
 	for (int i = 0; i <  (int)vectorM.size(); i++)
 	{
